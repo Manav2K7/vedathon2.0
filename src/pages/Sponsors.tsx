@@ -17,7 +17,7 @@ export function Sponsors() {
         <div className="absolute -bottom-2 -left-2 w-12 h-12 border-b-2 border-l-2 border-primary-container/60" />
         <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary-container/60" />
 
-        <div className="relative z-10">
+        <div className="relative z-10 text-center flex flex-col items-center">
           <div className="flex items-center gap-3 mb-4">
             <HeartHandshake className="w-5 h-5 text-primary-container" />
             <span className="font-mono text-xs tracking-[0.3em] text-primary-container/70 uppercase">
@@ -27,7 +27,7 @@ export function Sponsors() {
 
           <h1 className="text-4xl md:text-5xl font-headline font-bold uppercase mb-4">
             <span className="text-primary">Our</span>{" "}
-            <span className="text-primary-container drop-shadow-[0_0_15px_rgba(200,30,30,0.4)]">Sponsors</span>
+            <span className="text-6xl md:text-5xl font-headline font-bold uppercase leading-[0.85] bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,70,20,0.45)]">Sponsors</span>
           </h1>
           <p className="text-on-surface/50 font-body max-w-2xl">
             The entities providing the computational resources and support for this operation. Partnerships fuel the mission.
@@ -87,11 +87,13 @@ export function Sponsors() {
           Support the next generation of developers. Align your brand with innovation, community, and raw technical talent.
         </p>
         <a
-          href="#"
-          className="inline-flex items-center justify-center bg-primary-container text-white font-headline uppercase font-bold text-sm tracking-widest px-6 py-3 hover:bg-secondary-container hover:shadow-[0_0_20px_rgba(200,30,30,0.3)] transition-all duration-300"
-        >
-          Contact Us
-        </a>
+  href="https://www.instagram.com/geekroom_adgips?igsi=MTVpY2h2cnFlcnQ2aA=="
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center bg-primary-container text-white font-headline uppercase font-bold text-sm tracking-widest px-6 py-3 hover:bg-secondary-container hover:shadow-[0_0_20px_rgba(200,30,30,0.3)] transition-all duration-300"
+>
+  Contact Us
+</a>
       </section>
     </div>
   )

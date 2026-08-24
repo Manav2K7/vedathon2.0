@@ -98,7 +98,7 @@ export function Gallery() {
           <h1 className="text-6xl md:text-8xl font-headline font-bold uppercase leading-[0.85]">
             <span className="text-primary">Hall of</span>
             <br />
-            <span className="text-primary-container drop-shadow-[0_0_15px_rgba(200,30,30,0.5)]">
+            <span className="text-5xl sm:text-5xl md:text-8xl font-headline font-bold uppercase leading-[0.9] bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(255,70,20,0.55)]">
               Memories
             </span>
           </h1>
@@ -172,10 +172,12 @@ export function Gallery() {
         <Card faction="orange" className="p-2 md:p-3 group cursor-pointer" onClick={() => openMemory(0)}>
           <div className="relative aspect-[16/8] overflow-hidden bg-surface-variant">
             <img
-              src={MEMORIES[0].image}
-              alt="Vedathon memory 01"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+  src={MEMORIES[0].image}
+  alt="Vedathon memory 01"
+  loading="eager"
+  decoding="async"
+  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20" />
             <div className="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/10 transition-colors duration-500" />
 
@@ -228,10 +230,12 @@ export function Gallery() {
                   <div className={`relative overflow-hidden bg-surface-variant ${large ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
                     <div className={memory.id === 10 ? "absolute inset-0 rotate-90 scale-[1.33]" : "absolute inset-0"}>
                       <img
-                        src={memory.image}
-                        alt={`Vedathon memory ${memory.id}`}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+  src={memory.image}
+  alt={`Vedathon memory ${memory.id}`}
+  loading={actualIndex < 5 ? "eager" : "lazy"}
+  decoding="async"
+  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+/>
                       <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-red-600/50 group-hover:border-primary-container transition-colors" />
                       <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-red-600/50 group-hover:border-primary-container transition-colors" />
                       <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-red-600/50 group-hover:border-primary-container transition-colors" />
