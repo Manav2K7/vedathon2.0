@@ -45,7 +45,7 @@ export function Tracks() {
         <div className="absolute -bottom-2 -left-2 w-12 h-12 border-b-2 border-l-2 border-primary-container/60" />
         <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary-container/60" />
 
-        <div className="relative z-10">
+        <div className="relative z-10 text-center flex flex-col items-center">
           <div className="flex items-center gap-3 mb-4">
             <Layers className="w-5 h-5 text-primary-container" />
             <span className="font-mono text-xs tracking-[0.3em] text-primary-container/70 uppercase">
@@ -55,7 +55,7 @@ export function Tracks() {
 
           <h1 className="text-4xl md:text-5xl font-headline font-bold uppercase mb-4">
             <span className="text-primary">Challenge</span>{" "}
-            <span className="text-primary-container drop-shadow-[0_0_15px_rgba(200,30,30,0.4)]">Tracks</span>
+            <span className="text-6xl md:text-6xl font-headline font-bold uppercase leading-[0.85] bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,70,20,0.45)]">Tracks</span>
           </h1>
           <p className="text-on-surface/50 font-body max-w-2xl">
             Five domains. Five problem spaces. Pick your battlefield and build something that matters.

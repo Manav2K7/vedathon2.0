@@ -1,4 +1,5 @@
 import { Button } from "../components/Button";
+import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
 import { Badge } from "../components/Badge";
 import { ChevronRight, Users, Zap, Clock } from "lucide-react";
@@ -30,7 +31,7 @@ export function Home() {
           <h1 className="text-5xl md:text-7xl font-headline font-bold uppercase leading-[1.1] tracking-tighter">
             <span className="text-primary">Survive the</span>
             <br />
-            <span className="text-primary-container drop-shadow-[0_0_20px_rgba(200,30,30,0.5)]">
+            <span className="text-6xl md:text-8xl font-headline font-bold uppercase leading-[0.85] bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(255,70,20,0.55)]">
               Haunted Grid
             </span>
           </h1>
@@ -40,12 +41,16 @@ export function Home() {
           </p>
           
           <div className="flex flex-wrap gap-4 pt-4">
-            <Button variant="primary" className="gap-2">
-              Enter the Fray <ChevronRight className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost-purple">
-              View Directives
-            </Button>
+            <Link to="/schedule">
+  <Button variant="primary" className="gap-2">
+    Enter the Fray <ChevronRight className="w-4 h-4" />
+  </Button>
+</Link>
+            <Link to="/tracks">
+  <Button variant="ghost-purple">
+    View Directives
+  </Button>
+</Link>
           </div>
         </div>
       </section>

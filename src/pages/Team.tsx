@@ -259,9 +259,7 @@ export function Team() {
 
   <span
     className="block px-1 -mx-1 text-[clamp(4rem,9vw,9rem)] font-black tracking-tight
-    bg-gradient-to-r from-primary-container via-secondary-container to-red-900
-    bg-clip-text text-transparent
-    drop-shadow-[0_0_8px_rgba(200,30,30,0.4)]"
+    bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,70,20,0.45)]"
   >
     TEAM
   </span>
@@ -495,6 +493,8 @@ export function Team() {
                       <img
                         src={member.image}
                         alt={member.name}
+                        loading="eager"
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         style={{
                           objectPosition: member.position,
