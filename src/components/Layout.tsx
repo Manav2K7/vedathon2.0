@@ -986,28 +986,30 @@ useEffect(() => {
 
 </div>
 
-      {/* ========== TOP NAV BAR ========== */}
+      {/* ========== FLOATING GLASS NAVBAR ========== */}
 
-      <header className="relative z-50 sticky top-0 bg-background/85 backdrop-blur-md border-b border-red-900/40">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-14">
+      <header className="relative z-50 sticky top-[18px] mx-auto max-w-[1280px] px-4 w-full transition-all duration-300">
+        <div className="flex items-center justify-between h-14 px-4 md:px-6 rounded-2xl border border-white/10"
+             style={{
+               background: 'rgba(10,7,7,0.58)',
+               backdropFilter: 'blur(18px) saturate(140%)',
+               WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+               boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.04), 0 12px 40px rgba(0,0,0,0.35)'
+             }}>
 
           {/* Logo */}
           <Link
             to="/"
             onClick={(e) => handleNavigation(e, '/')}
-            className="flex items-center gap-2 shrink-0"
+            className="flex items-center gap-2 shrink-0 group"
           >
-            <span className="text-lg font-headline font-bold text-primary-container tracking-tight drop-shadow-[0_0_10px_rgba(200,30,30,0.3)]">
-              VEDATHON
-            </span>
-
-            <span className="hidden sm:inline font-mono text-[9px] text-red-400/50 tracking-widest uppercase mt-0.5">
-              _2.0
+            <span className="text-xl md:text-2xl font-headline font-normal text-on-surface tracking-wider group-hover:animate-[textGlitch_0.2s_infinite_alternate] group-hover:text-primary transition-colors">
+              VEDATHON 2.0
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-6">
             {NAV_ITEMS.map((item) => {
               const isActive = location.pathname === item.path
 
@@ -1017,40 +1019,58 @@ useEffect(() => {
                   to={item.path}
                   onClick={(e) => handleNavigation(e, item.path)}
                   className={cn(
-                    'relative px-3 py-2 font-mono text-[11px] uppercase tracking-wider transition-colors duration-200',
+                    'relative font-new-rocker text-[17px] tracking-[0.08em] transition-all duration-200',
                     isActive
-                      ? 'text-primary-container'
-                      : 'text-on-surface/50 hover:text-on-surface'
+                      ? 'text-primary drop-shadow-[0_0_2px_rgba(227,27,22,0.4)]'
+                      : 'text-on-surface-muted hover:text-on-surface'
                   )}
                 >
                   {item.label}
-
                   {isActive && (
-                    <span className="absolute bottom-0 left-2 right-2 h-px bg-primary-container shadow-[0_0_6px_rgba(200,30,30,0.5)]" />
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-primary shadow-[0_0_8px_rgba(227,27,22,0.8)]" />
                   )}
                 </Link>
               )
             })}
           </nav>
 
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-on-surface/60 hover:text-primary-container transition-colors"
-            aria-label="Toggle navigation"
-          >
-            {mobileOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
-          </button>
+          <div className="flex items-center gap-4">
+            {/* CTA */}
+            <a 
+              href="https://hack2skill.com/event/vedathon2?sectionid=6aba08dfcc541d9410449b62"
+              className="hidden md:flex group relative overflow-hidden bg-[#240a0a] px-6 py-2 border border-primary/40 transition-all duration-300 hover:-translate-y-[2px] hover:border-primary/80 hover:shadow-[0_0_20px_rgba(227,27,22,0.25)] items-center justify-center rounded-sm"
+            >
+              <div className="absolute inset-0 w-0 bg-primary transition-all duration-500 ease-out group-hover:w-full opacity-10" />
+              <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-10 group-hover:animate-[shine_1s_ease-out]" />
+              <span className="relative z-10 flex items-center gap-2 font-headline text-base font-semibold tracking-wider text-on-surface">
+                REGISTER NOW
+                <span className="transition-transform duration-300 group-hover:translate-x-1">↗</span>
+              </span>
+            </a>
+
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-2 text-on-surface-muted hover:text-primary transition-colors"
+              aria-label="Toggle navigation"
+            >
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile dropdown */}
         {mobileOpen && (
-          <nav className="md:hidden border-t border-red-900/30 bg-background/95 backdrop-blur-md">
+          <nav className="md:hidden mt-4 rounded-2xl border border-white/10 p-4 shadow-xl"
+               style={{
+                 background: 'rgba(10,7,7,0.85)',
+                 backdropFilter: 'blur(20px)'
+               }}>
             {NAV_ITEMS.map((item) => {
               const isActive = location.pathname === item.path
 
@@ -1060,10 +1080,10 @@ useEffect(() => {
                   to={item.path}
                   onClick={(e) => handleNavigation(e, item.path)}
                   className={cn(
-                    'flex items-center gap-3 px-5 py-3 font-mono text-xs uppercase tracking-wider border-l-2 transition-colors',
+                    'flex items-center gap-3 px-4 py-3 font-new-rocker text-[17px] tracking-[0.08em] transition-colors rounded-lg',
                     isActive
-                      ? 'border-primary-container text-primary-container bg-primary-container/5'
-                      : 'border-transparent text-on-surface/50 hover:text-on-surface hover:bg-surface-variant'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-on-surface-muted hover:text-on-surface hover:bg-surface-variant'
                   )}
                 >
                   <item.icon className="w-4 h-4" />
@@ -1071,6 +1091,13 @@ useEffect(() => {
                 </Link>
               )
             })}
+            
+            <a 
+              href="https://hack2skill.com/event/vedathon2?sectionid=6aba08dfcc541d9410449b62"
+              className="mt-4 flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#240a0a] border border-primary/40 font-headline text-base font-semibold tracking-wider text-on-surface rounded-lg transition-all hover:bg-primary/20"
+            >
+              REGISTER NOW ↗
+            </a>
           </nav>
         )}
       </header>
@@ -1084,25 +1111,16 @@ useEffect(() => {
       {/* Animation keyframes */}
       <style>{`
   @keyframes pageFade {
-  0% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  25% { opacity: 0.35; }
+  50% { opacity: 0.95; }
+  70% { opacity: 0.95; }
+  100% { opacity: 0; }
+}
 
-  25% {
-    opacity: 0.35;
-  }
-
-  50% {
-    opacity: 0.95;
-  }
-
-  70% {
-    opacity: 0.95;
-  }
-
-  100% {
-    opacity: 0;
-  }
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
 @keyframes signalPulse {
