@@ -1,12 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "../components/Card";
+import { cn } from "../lib/utils";
+
 import {
   X,
   ChevronLeft,
   ChevronRight,
   Maximize2,
 } from "lucide-react";
+
+function LazyImage({ 
+  src, 
+  alt, 
+  className, 
+  loading = "lazy" 
+}: { 
+  src: string; 
+  alt: string; 
+  className?: string; 
+  loading?: "lazy" | "eager" 
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      onLoad={() => setIsLoaded(true)}
+      className={cn(
+        className,
+        "transition-[opacity,filter,transform] duration-[1200ms] ease-out",
+        isLoaded ? "opacity-100 blur-0" : "opacity-0 blur-md"
+      )}
+    />
+  );
+}
 
 const MEMORIES = [
   { id: 1, image: "/Gallery/1.jpeg", label: "ARCHIVE_01" },
@@ -169,15 +199,14 @@ export function Gallery() {
           <div className="hidden md:block font-mono text-[10px] tracking-widest text-on-surface/25">01 / 12</div>
         </div>
 
-        <Card faction="orange" className="p-2 md:p-3 group cursor-pointer" onClick={() => openMemory(0)}>
+        <div className="p-2 md:p-3 group cursor-pointer border border-white/5 bg-[#120808]/60 hover:bg-[#1a0a0a] transition-colors" onClick={() => openMemory(0)}>
           <div className="relative aspect-[16/8] overflow-hidden bg-surface-variant">
-            <img
-  src={MEMORIES[0].image}
-  alt="Vedathon memory 01"
-  loading="eager"
-  decoding="async"
-  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-/>
+            <LazyImage
+              src={MEMORIES[0].image}
+              alt="Vedathon memory 01"
+              loading="eager"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20" />
             <div className="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/10 transition-colors duration-500" />
 
@@ -204,7 +233,7 @@ export function Gallery() {
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       </section>
 
       {/* MEMORY GRID */}
@@ -222,20 +251,18 @@ export function Gallery() {
 
             return (
               <div key={memory.id} className={large ? "md:col-span-7" : "md:col-span-5"}>
-                <Card
-                  faction={actualIndex % 2 === 0 ? "purple" : "orange"}
-                  className="p-2 group cursor-pointer h-full"
+                <div
+                  className="p-2 group cursor-pointer h-full border border-white/5 bg-[#120808]/60 hover:bg-[#1a0a0a] transition-colors"
                   onClick={() => openMemory(actualIndex)}
                 >
                   <div className={`relative overflow-hidden bg-surface-variant ${large ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
                     <div className={memory.id === 10 ? "absolute inset-0 rotate-90 scale-[1.33]" : "absolute inset-0"}>
-                      <img
-  src={memory.image}
-  alt={`Vedathon memory ${memory.id}`}
-  loading={actualIndex < 5 ? "eager" : "lazy"}
-  decoding="async"
-  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-/>
+                      <LazyImage
+                        src={memory.image}
+                        alt={`Vedathon memory ${memory.id}`}
+                        loading={actualIndex < 5 ? "eager" : "lazy"}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                       <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-red-600/50 group-hover:border-primary-container transition-colors" />
                       <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-red-600/50 group-hover:border-primary-container transition-colors" />
                       <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-red-600/50 group-hover:border-primary-container transition-colors" />
@@ -262,7 +289,7 @@ export function Gallery() {
                       </span>
                     </div>
                   </div>
-                </Card>
+                </div>
               </div>
             );
           })}
@@ -278,7 +305,8 @@ export function Gallery() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {LOGS.map((log, index) => (
-            <Card key={index} faction={index === 0 ? "purple" : "orange"} className="p-6 md:p-8 group">
+            <div key={index} className="p-6 md:p-8 group border border-white/5 bg-[#120808]/60 hover:bg-[#1a0a0a] transition-colors relative overflow-hidden">
+              <div className="absolute top-0 left-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
               <div className="relative">
                 <span className="absolute top-0 right-0 font-headline text-6xl text-on-surface/10 leading-none">&ldquo;</span>
                 <p className="font-mono text-[9px] tracking-[0.25em] text-on-surface/35 mb-5">
@@ -297,7 +325,7 @@ export function Gallery() {
                   </div>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
@@ -349,9 +377,10 @@ export function Gallery() {
 
           <div className="w-full max-w-6xl h-[82vh] flex items-center justify-center">
             <div className={`relative max-w-full max-h-full ${MEMORIES[selectedIndex].id === 10 ? "rotate-90" : ""}`}>
-              <img
+              <LazyImage
                 src={MEMORIES[selectedIndex].image}
                 alt={`Vedathon memory ${MEMORIES[selectedIndex].id}`}
+                loading="eager"
                 className="max-w-full max-h-[78vh] object-contain"
               />
               <div className="absolute -top-2 -left-2 w-6 h-6 border-t border-l border-primary-container" />

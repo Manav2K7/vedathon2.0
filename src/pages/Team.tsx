@@ -111,6 +111,16 @@ const TEAM_MEMBERS = [
   },
   {
     id: "011",
+    name: "YASH",
+    role: "WEB DEV CO LEAD",
+    faction: "purple",
+    access: "WEB_OP // CO_LEAD_ACCESS",
+    image: "/Team/yash web dev co lead.jpeg",
+    position: "center 20%",
+    linkedin: "https://www.linkedin.com/in/yashbuilds",
+  },
+  {
+    id: "012",
     name: "SHAMBHAVI",
     role: "EMERGING TECH CO LEAD",
     faction: "purple",
@@ -121,7 +131,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/shambhavi-singh-bb0367373",
   },
   {
-    id: "012",
+    id: "013",
     name: "DRISHTI",
     role: "DSA CO LEAD",
     faction: "green",
@@ -131,7 +141,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/dristi-a-3216b137a",
   },
   {
-    id: "013",
+    id: "014",
     name: "AMAN KUMAR",
     role: "GRAPHICS CO LEAD",
     faction: "orange",
@@ -139,16 +149,6 @@ const TEAM_MEMBERS = [
     image: "/Team/Aman kumar graphics co lead.jpeg",
     position: "center 90%",
     linkedin: "https://www.linkedin.com/in/aman-kumar-960081357",
-  },
-  {
-    id: "014",
-    name: "YASH",
-    role: "WEB DEV CO LEAD",
-    faction: "purple",
-    access: "WEB_OP // CO_LEAD_ACCESS",
-    image: "/Team/Yash Web dev co lead.jpeg",
-    position: "center 20%",
-    linkedin: "https://www.linkedin.com/in/yashbuilds",
   },
 ];
 
@@ -232,38 +232,31 @@ export function Team() {
         {/* HERO */}
         <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[500px] mb-12">
 
-          {/* Decorative spider-web style border */}
+          {/* Decorative border */}
           <div className="absolute inset-0 pointer-events-none border border-red-900/40" />
-
-          <div className="absolute -top-2 -left-2 w-16 h-16 border-t-2 border-l-2 border-red-700/70" />
-          <div className="absolute -top-2 -right-2 w-16 h-16 border-t-2 border-r-2 border-red-700/70" />
-          <div className="absolute -bottom-2 -left-2 w-16 h-16 border-b-2 border-l-2 border-red-700/70" />
-          <div className="absolute -bottom-2 -right-2 w-16 h-16 border-b-2 border-r-2 border-red-700/70" />
 
           {/* LEFT SIDE */}
 
           <div className="lg:col-span-7 relative z-10 px-5 sm:px-8 lg:px-12 py-10">
 
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse shadow-[0_0_12px_rgba(255,0,0,0.9)]" />
-
               <span className="font-mono text-xs tracking-[0.3em] text-red-500 uppercase">
                 // PERSONNEL_DATABASE
               </span>
             </div>
 
             <h1 className="uppercase leading-[0.9] mb-8 max-w-full overflow-visible">
-  <span className="block text-[clamp(4rem,9vw,9rem)] font-black text-white tracking-tight drop-shadow-[4px_4px_0_#500000]">
-    THE
-  </span>
+              <span className="block text-[clamp(4rem,9vw,9rem)] font-black text-white tracking-tight drop-shadow-[4px_4px_0_#500000]">
+                THE
+              </span>
 
-  <span
-    className="block px-1 -mx-1 text-[clamp(4rem,9vw,9rem)] font-black tracking-tight
-    bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,70,20,0.45)]"
-  >
-    TEAM
-  </span>
-</h1>
+              <span
+                className="block px-1 -mx-1 text-[clamp(4rem,9vw,9rem)] font-black tracking-tight
+                bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,70,20,0.45)]"
+              >
+                TEAM
+              </span>
+            </h1>
 
             <div className="inline-block bg-red-700 px-5 py-2 mb-7 shadow-[5px_5px_0_rgba(0,0,0,0.7)]">
               <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-black">
@@ -271,54 +264,7 @@ export function Team() {
               </span>
             </div>
 
-            <p className="max-w-2xl text-gray-300 text-sm sm:text-base md:text-lg leading-7 border-l-2 border-red-700 pl-5">
-              The core engineers, designers, and architects maintaining the
-              structural integrity of the V2.0 protocol. This database contains
-              verified clearance logs for all active personnel overseeing the
-              hackathon infrastructure.
-            </p>
 
-            {/* STATUS BOXES */}
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10">
-
-              <div className="border border-red-800/70 bg-black/65 p-4 backdrop-blur-sm">
-                <span className="block font-mono text-[9px] text-red-500 tracking-widest mb-2">
-                  STATUS
-                </span>
-                <span className="font-mono text-xs text-white">
-                  ACTIVE 
-                </span>
-              </div>
-
-              <div className="border border-red-800/70 bg-black/65 p-4 backdrop-blur-sm">
-                <span className="block font-mono text-[9px] text-red-500 tracking-widest mb-2">
-                  ACCESS
-                </span>
-                <span className="font-mono text-xs text-white">
-                  VERIFIED
-                </span>
-              </div>
-
-              <div className="border border-red-800/70 bg-black/65 p-4 backdrop-blur-sm">
-                <span className="block font-mono text-[9px] text-red-500 tracking-widest mb-2">
-                  OPERATORS
-                </span>
-                <span className="font-mono text-xs text-white">
-                  14
-                </span>
-              </div>
-
-              <div className="border border-red-800/70 bg-black/65 p-4 backdrop-blur-sm">
-                <span className="block font-mono text-[9px] text-red-500 tracking-widest mb-2">
-                  PROTOCOL
-                </span>
-                <span className="font-mono text-xs text-white">
-                  V2.0
-                </span>
-              </div>
-
-            </div>
           </div>
 
           {/* ========================================================
@@ -381,45 +327,7 @@ export function Team() {
 
         </section>
 
-        {/* ==========================================================
-            SYSTEM STATUS BAR
-        ========================================================== */}
 
-        <section className="relative border-y border-red-900/60 bg-black/70 backdrop-blur-md mb-20">
-
-          <div className="flex flex-wrap justify-center sm:justify-between items-center gap-x-5 gap-y-3 px-4 sm:px-8 py-5 font-mono text-[9px] sm:text-[10px] md:text-xs tracking-widest">
-
-            <span className="flex items-center gap-2 text-red-400">
-              <Skull className="w-3 h-3" />
-              [ CORE OPERATORS 14 ]
-            </span>
-
-            <span className="hidden sm:block text-red-900">
-              ///
-            </span>
-
-            <span className="text-red-400">
-              [ SYSTEM STATUS ONLINE ]
-            </span>
-
-            <span className="hidden sm:block text-red-900">
-              ///
-            </span>
-
-            <span className="text-red-400">
-              [ EVENT V2.0 ]
-            </span>
-
-            <span className="hidden sm:block text-red-900">
-              ///
-            </span>
-
-            <span className="text-red-400">
-              [ ACCESS VERIFIED ]
-            </span>
-
-          </div>
-        </section>
 
         {/* ==========================================================
             PERSONNEL ARCHIVE HEADER
@@ -430,16 +338,6 @@ export function Team() {
           <div className="flex items-end justify-between gap-5">
 
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-red-600 font-mono text-xs">
-                  //
-                </span>
-
-                <span className="font-mono text-xs tracking-[0.25em] text-red-500">
-                  PERSONNEL_ARCHIVE
-                </span>
-              </div>
-
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase text-white tracking-tight drop-shadow-[3px_3px_0_#550000]">
                 CORE OPERATIVES
               </h2>
@@ -513,16 +411,6 @@ export function Team() {
 
                     <div className="absolute inset-0 border border-red-700/20 group-hover:border-red-500/70 transition-colors pointer-events-none" />
 
-                    {/* Archive ID */}
-
-                    <div className="absolute top-3 left-3 bg-black/85 border border-red-800 px-2 py-1">
-
-                      <span className="font-mono text-[8px] tracking-widest text-red-400">
-                        ARCHIVE_{member.id}
-                      </span>
-
-                    </div>
-
                     {/* Expand */}
 
                     <div className="absolute top-3 right-12 bg-black/80 border border-red-800 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -592,7 +480,7 @@ export function Team() {
 
                         <span className="w-1.5 h-1.5 bg-red-600 animate-pulse shadow-[0_0_7px_rgba(255,0,0,0.8)]" />
 
-                        <span className="font-mono text-[8px] tracking-[0.18em] text-red-500">
+                        <span className="font-mono text-[9px] tracking-[0.18em] text-red-500">
                           {member.access.split(" // ")[0]}
                         </span>
 
@@ -602,17 +490,17 @@ export function Team() {
 
                         <div className="min-w-0">
 
-                          <h3 className="text-base sm:text-lg font-black uppercase text-white truncate drop-shadow-[2px_2px_0_black]">
+                          <h3 className="text-xl sm:text-2xl font-black uppercase text-white truncate drop-shadow-[2px_2px_0_black]">
                             {member.name}
                           </h3>
 
-                          <p className="font-mono text-[8px] text-gray-400 uppercase tracking-wider mt-1 truncate">
+                          <p className="font-mono text-[10px] sm:text-xs text-gray-400 uppercase tracking-wider mt-1 truncate">
                             {member.role}
                           </p>
 
                         </div>
 
-                        <span className="font-mono text-xs text-red-500 flex-shrink-0">
+                        <span className="font-mono text-sm text-red-500 flex-shrink-0">
                           {String(index + 1).padStart(2, "0")}
                         </span>
 
@@ -667,120 +555,202 @@ export function Team() {
         </section>
 
       {/* ============================================================
-          FULLSCREEN PHOTO VIEWER
+          FULLSCREEN PHOTO VIEWER (PERSONNEL ARCHIVE)
       ============================================================ */}
 
       {selectedIndex !== null && (
-
-        <div className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-4">
-
-          {/* Background in viewer */}
-
+        <div 
+          className="fixed inset-0 z-[9999] bg-[#040303]/95 flex flex-col overflow-hidden animate-[archiveOpen_550ms_cubic-bezier(0.16,1,0.3,1)_forwards]"
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* Background atmosphere */}
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{
-              backgroundImage: `url("${VEDATHON_BACKGROUND}")`,
-            }}
+            className="absolute inset-0 bg-cover bg-center opacity-[0.03] mix-blend-screen pointer-events-none"
+            style={{ backgroundImage: `url("${VEDATHON_BACKGROUND}")` }}
           />
-
-          <div className="absolute inset-0 bg-black/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[rgba(255,0,0,0.015)] pointer-events-none" />
+          {/* subtle scanlines via repeating linear gradient */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px]" />
 
           {/* TOP BAR */}
+          <div className="relative z-10 flex justify-between items-start sm:items-center p-4 sm:p-6 lg:p-8 shrink-0">
+            <div className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-red-500 leading-relaxed">
+              VEDATHON // TEAM ARCHIVE<br />
+              PERSONNEL FILE / {TEAM_MEMBERS[selectedIndex].id}
+            </div>
+            
+            <div className="flex items-center gap-6 sm:gap-10">
+              <div className="font-mono text-[10px] sm:text-xs tracking-widest text-red-500">
+                {String(selectedIndex + 1).padStart(2, '0')} / {String(TEAM_MEMBERS.length).padStart(2, '0')}
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedIndex(null)}
+                className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                aria-label="Close archive"
+              >
+                <span className="font-mono text-[10px] sm:text-xs tracking-widest hidden sm:block">CLOSE</span>
+                <X className="w-6 h-6 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+          </div>
 
-          <div className="absolute top-0 left-0 right-0 z-[10010] px-5 py-4 flex items-center justify-between border-b border-red-900/60 bg-black/80">
+          {/* MAIN CONTENT AREA */}
+          <div 
+            key={TEAM_MEMBERS[selectedIndex].id} 
+            className="relative z-10 flex-1 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 px-4 sm:px-8 lg:px-12 overflow-y-auto lg:overflow-hidden animate-[memberGlitch_200ms_ease-out_forwards]"
+          >
+            {/* LEFT: PHOTO */}
+            <div className="w-full lg:w-[55%] h-[40vh] lg:h-[70vh] flex items-center justify-center shrink-0">
+              <div className="relative w-full h-full max-w-3xl border border-red-900/40 shadow-[inset_0_0_60px_rgba(50,0,0,0.4)] group overflow-hidden bg-black/40">
+                {/* Photo Corners */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-red-600 z-20" />
+                <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-red-600 z-20" />
+                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-red-600 z-20" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-red-600 z-20" />
 
-            <div className="flex items-center gap-3">
+                <img
+                  src={TEAM_MEMBERS[selectedIndex].image}
+                  alt={TEAM_MEMBERS[selectedIndex].name}
+                  className={`w-full h-full object-contain ${TEAM_MEMBERS[selectedIndex].rotate ? "rotate-90 scale-125" : ""} transition-transform duration-[2000ms] group-hover:scale-[1.02]`}
+                />
 
-              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse shadow-[0_0_10px_red]" />
+                {/* Photo Overlays */}
+                <div className="absolute inset-0 bg-red-900/5 mix-blend-color pointer-events-none" />
+                <div className="absolute top-3 left-3 bg-black/80 px-2 py-1 z-20">
+                  <span className="font-mono text-[8px] tracking-[0.2em] text-red-500">
+                    ARCHIVE_{TEAM_MEMBERS[selectedIndex].id}
+                  </span>
+                </div>
+                <div className="absolute bottom-3 right-3 bg-black/80 px-2 py-1 z-20">
+                  <span className="font-mono text-[8px] tracking-[0.2em] text-red-500">
+                    {TEAM_MEMBERS[selectedIndex].id}
+                  </span>
+                </div>
+              </div>
+            </div>
 
-              <span className="font-mono text-[9px] sm:text-xs tracking-[0.2em] text-red-400">
-                PERSONNEL_VIEWER //{" "}
-                {TEAM_MEMBERS[selectedIndex].id}
+            {/* RIGHT: INFO */}
+            <div className="w-full lg:w-[40%] flex flex-col justify-center pb-10 lg:pb-0">
+              <span className="font-mono text-[10px] tracking-[0.2em] text-red-500 mb-3 animate-pulse">
+                {TEAM_MEMBERS[selectedIndex].access.split(" // ")[0]}
               </span>
+              
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-[0.9] drop-shadow-[3px_3px_0_#500000] mb-3">
+                {TEAM_MEMBERS[selectedIndex].name}
+              </h2>
+              
+              <h3 className="text-base sm:text-lg font-body font-bold text-gray-400 uppercase tracking-widest mb-10">
+                {TEAM_MEMBERS[selectedIndex].role}
+              </h3>
 
+              <div className="space-y-6 mb-12 border-l-2 border-red-900/50 pl-5">
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.25em] text-red-600 mb-1">ARCHIVE STATUS</div>
+                  <div className="font-mono text-xs text-white tracking-wider">ACTIVE</div>
+                </div>
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.25em] text-red-600 mb-1">DIVISION</div>
+                  <div className="font-mono text-xs text-white tracking-wider">
+                    {TEAM_MEMBERS[selectedIndex].role.includes("PRESIDENT") ? "EXECUTIVE DIRECTIVE" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("SECRETARY") ? "ADMINISTRATION" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("AIML") ? "AI & MACHINE LEARNING" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("EMERGING TECH") ? "EMERGING TECHNOLOGIES" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("DSA") ? "ALGORITHMS" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("WEB DEV") ? "WEB DEVELOPMENT" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("MARKETING") ? "MARKETING & OUTREACH" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("SOCIAL MEDIA") ? "SOCIAL MEDIA" :
+                     TEAM_MEMBERS[selectedIndex].role.includes("GRAPHICS") ? "DESIGN & GRAPHICS" :
+                     "CORE OPERATIONS"}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-[9px] tracking-[0.25em] text-red-600 mb-1">ACCESS LEVEL</div>
+                  <div className="font-mono text-xs text-white tracking-wider">
+                    {TEAM_MEMBERS[selectedIndex].access.split(" // ")[1].replace("_ACCESS", " TEAM").replace("_", " ")}
+                  </div>
+                </div>
+              </div>
+
+              {TEAM_MEMBERS[selectedIndex].linkedin && (
+                <a
+                  href={TEAM_MEMBERS[selectedIndex].linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-3 border border-red-800 bg-black/50 px-6 py-3 w-fit hover:border-red-500 overflow-hidden transition-all duration-300"
+                >
+                  <div className="absolute inset-0 w-0 bg-red-900/30 group-hover:w-full transition-all duration-500 ease-out" />
+                  <span className="relative z-10 font-mono text-[10px] tracking-[0.2em] text-red-400 group-hover:text-white transition-colors">
+                    LINKEDIN ↗
+                  </span>
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* BOTTOM CONTROLS & THUMBNAILS */}
+          <div className="relative z-10 mt-auto shrink-0 bg-black/60 border-t border-red-900/40 backdrop-blur-md">
+            {/* Prev/Next Bar */}
+            <div className="flex justify-between items-center px-4 sm:px-8 py-4 border-b border-red-900/20">
+              <button
+                type="button"
+                onClick={previousMember}
+                className="group flex flex-col items-start text-left focus:outline-none"
+              >
+                <span className="font-mono text-[9px] text-red-600 tracking-[0.2em] group-hover:text-red-400 transition-colors mb-1">
+                  ← PREVIOUS
+                </span>
+                <span className="font-headline text-sm sm:text-base uppercase text-gray-500 group-hover:text-white transition-colors">
+                  {TEAM_MEMBERS[selectedIndex === 0 ? TEAM_MEMBERS.length - 1 : selectedIndex - 1].name}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={nextMember}
+                className="group flex flex-col items-end text-right focus:outline-none"
+              >
+                <span className="font-mono text-[9px] text-red-600 tracking-[0.2em] group-hover:text-red-400 transition-colors mb-1">
+                  NEXT →
+                </span>
+                <span className="font-headline text-sm sm:text-base uppercase text-gray-500 group-hover:text-white transition-colors">
+                  {TEAM_MEMBERS[selectedIndex === TEAM_MEMBERS.length - 1 ? 0 : selectedIndex + 1].name}
+                </span>
+              </button>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setSelectedIndex(null)}
-              className="relative z-[10020] p-2 text-white hover:text-red-500 transition-colors"
-              aria-label="Close photo viewer"
-            >
-              <X className="w-7 h-7" />
-            </button>
-
-          </div>
-
-          {/* ========================================================
-              LEFT NAVIGATION
-          ======================================================== */}
-
-          <button
-            type="button"
-            onClick={previousMember}
-            className="absolute left-2 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-[10020] flex items-center justify-center w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28 border border-red-700 bg-black/80 text-red-500 hover:bg-red-700 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(150,0,0,0.4)]"
-            aria-label="Previous team member"
-          >
-            <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
-          </button>
-
-          {/* IMAGE */}
-
-          <div className="relative z-[10000] w-full max-w-5xl h-[78vh] flex items-center justify-center px-16 sm:px-20">
-
-            <div
-              className={`relative max-w-full max-h-full ${
-                TEAM_MEMBERS[selectedIndex].rotate
-                  ? "rotate-90"
-                  : ""
-              }`}
-            >
-
-              <img
-                src={TEAM_MEMBERS[selectedIndex].image}
-                alt={TEAM_MEMBERS[selectedIndex].name}
-                className="max-w-full max-h-[72vh] object-contain border border-red-700/70 shadow-[0_0_50px_rgba(150,0,0,0.25)]"
-              />
-
-              {/* Image corners */}
-
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-red-500" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-red-500" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-red-500" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-red-500" />
-
+            {/* Thumbnail Strip */}
+            <div className="flex items-center gap-2 px-4 py-3 overflow-x-auto scrollbar-hide snap-x">
+              {TEAM_MEMBERS.map((member, idx) => {
+                const isActive = idx === selectedIndex;
+                return (
+                  <button
+                    key={member.id}
+                    onClick={() => setSelectedIndex(idx)}
+                    className={`relative shrink-0 snap-center transition-all duration-300 overflow-hidden ${
+                      isActive 
+                        ? "w-14 h-16 sm:w-16 sm:h-20 border-2 border-red-500 opacity-100 scale-105" 
+                        : "w-12 h-14 sm:w-14 sm:h-16 border border-red-900/40 opacity-40 hover:opacity-80 grayscale hover:grayscale-[50%]"
+                    }`}
+                  >
+                    <img
+                      src={member.image}
+                      alt={`Thumbnail of ${member.name}`}
+                      className={`w-full h-full object-cover ${member.rotate ? "rotate-90 scale-150" : ""}`}
+                    />
+                    {isActive && (
+                      <>
+                        <div className="absolute inset-0 bg-red-500/10 mix-blend-screen pointer-events-none" />
+                        <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_5px_red]" />
+                      </>
+                    )}
+                  </button>
+                );
+              })}
             </div>
-
           </div>
-
-          {/* ========================================================
-              RIGHT NAVIGATION
-          ======================================================== */}
-
-          <button
-            type="button"
-            onClick={nextMember}
-            className="absolute right-2 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-[10020] flex items-center justify-center w-12 h-20 sm:w-16 sm:h-24 md:w-20 md:h-28 border border-red-700 bg-black/80 text-red-500 hover:bg-red-700 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(150,0,0,0.4)]"
-            aria-label="Next team member"
-          >
-            <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
-          </button>
-
-          {/* BOTTOM INFO */}
-
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-[10020] flex flex-col items-center gap-2">
-
-            <span className="font-mono text-sm tracking-[0.3em] text-red-500">
-              {String(selectedIndex + 1).padStart(2, "0")} /{" "}
-              {String(TEAM_MEMBERS.length).padStart(2, "0")}
-            </span>
-
-            <span className="hidden sm:block font-mono text-[8px] tracking-[0.2em] text-gray-500">
-              USE ← → TO NAVIGATE // ESC TO CLOSE
-            </span>
-
-          </div>
-
         </div>
       )}
 

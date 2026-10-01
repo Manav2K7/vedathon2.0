@@ -1,117 +1,187 @@
-import { Card } from "../components/Card";
-import { Badge } from "../components/Badge";
 import { Calendar } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const TIMELINE = [
-  { time: "09:00", title: "INITIALIZATION PROTOCOL", desc: "Registration & Briefing", faction: "purple" },
-  { time: "10:30", title: "SYSTEMS NOMINAL", desc: "Hacking Begins", faction: "green" },
-  { time: "13:00", title: "RATION DISPENSARY", desc: "Lunch Break", faction: "orange" },
-  { time: "18:00", title: "ANOMALY INJECTION", desc: "Surprise Challenge Unlocked", faction: "purple" },
-  { time: "23:59", title: "TERMINATION SEQUENCE", desc: "Submissions Close", faction: "orange" },
+  { id: "01", title: "REGISTRATION", desc: "Arrival, briefing, and system initialization." },
+  { id: "02", title: "TEAM FORMATION", desc: "Form squads and align objectives." },
+  { id: "03", title: "HACKATHON", desc: "Core development block. The grid is active." },
+  { id: "04", title: "ANOMALY INJECTION", desc: "Surprise challenge unlocked for bonus points." },
+  { id: "05", title: "SUBMISSION", desc: "Termination sequence. All builds finalized." },
+  { id: "06", title: "JUDGING & RESULTS", desc: "Final evaluation and rewards distribution." },
 ] as const;
 
-// PLACEHOLDER: Replace TBA banners with confirmed content when available
-const BANNERS = [
-  { title: "DAY 1 KICKOFF", desc: "Opening ceremony and track introductions.", time: "TBA" },
-  { title: "WORKSHOP BLOCK", desc: "Technical workshops and mentor-led sessions.", time: "TBA" },
-  { title: "MENTOR ROUNDS", desc: "One-on-one guidance from industry experts.", time: "TBA" },
-  { title: "FINAL PITCH NIGHT", desc: "Team presentations and judging.", time: "TBA" },
-];
-
 export function Schedule() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(100);
+
+  // Path drawing effect on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const scrollPosition = windowHeight - rect.top;
+      // Subtracting a bit so it finishes drawing before it completely scrolls out of view
+      const totalScrollable = rect.height + windowHeight * 0.5; 
+      
+      let rawProgress = scrollPosition / totalScrollable;
+      rawProgress = Math.max(0, Math.min(1, rawProgress));
+      
+      setScrollProgress(100 - (rawProgress * 100));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  // Intersection Observer for staggered card animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("opacity-100", "translate-y-0", "translate-x-0");
+          entry.target.classList.remove("opacity-0", "translate-y-16", "md:-translate-x-12", "md:translate-x-12");
+          // Optionally unobserve if we only want it to animate once:
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -100px 0px"
+    });
+
+    const elements = document.querySelectorAll(".timeline-node-card");
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="space-y-12 animate-in fade-in duration-700">
+    <div className="space-y-16 animate-in fade-in duration-700 pb-20">
 
       {/* Header */}
-      <header className="relative bg-surface-container border border-red-900/40 p-8 md:p-12 overflow-hidden">
-        <div className="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary-container/60" />
-        <div className="absolute -top-2 -right-2 w-12 h-12 border-t-2 border-r-2 border-primary-container/60" />
-        <div className="absolute -bottom-2 -left-2 w-12 h-12 border-b-2 border-l-2 border-primary-container/60" />
-        <div className="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary-container/60" />
-
-        <div className="relative z-10 text-center flex flex-col items-center">
-          <div className="flex items-center gap-3 mb-4">
-            <Calendar className="w-5 h-5 text-primary-container" />
-            <span className="font-mono text-xs tracking-[0.3em] text-primary-container/70 uppercase">
-              // FIELD_TIMELINE
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl font-headline font-bold uppercase mb-4">
-            <span className="text-primary">Event</span>{" "}
-            <span className="text-6xl md:text-5xl font-headline font-bold uppercase leading-[0.85] bg-gradient-to-r from-red-700 via-[#d94a18] to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,70,20,0.45)]">Schedule</span>
-          </h1>
-          <p className="text-on-surface/50 font-body max-w-2xl">
-            Track your progress through the hackathon phases. Deviation from the timeline may result in unpredictable consequences.
-          </p>
+      <header className="relative pt-12 md:pt-24 text-center max-w-3xl mx-auto space-y-6">
+        <div className="inline-flex items-center gap-3">
+          <Calendar className="w-4 h-4 text-primary" />
+          <span className="font-mono text-sm tracking-[0.2em] text-on-surface-muted uppercase">
+            OPERATION_TIMELINE
+          </span>
         </div>
+
+        <h1 className="text-5xl md:text-7xl font-headline font-bold uppercase leading-[0.85] tracking-tighter">
+          <span className="text-on-surface block mb-2">Event</span>
+          <span className="text-primary block drop-shadow-[0_0_20px_rgba(227,27,22,0.4)]">Schedule</span>
+        </h1>
+        
+        <p className="font-body text-lg text-on-surface-muted font-light leading-relaxed">
+          Track your progress through the hackathon phases. Deviation from the timeline may result in unpredictable consequences.
+        </p>
       </header>
 
-      {/* TBA Banners */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-xs tracking-[0.25em] text-primary-container/70 uppercase">
-            // EVENT_BANNERS
-          </span>
-          <div className="h-px flex-1 bg-red-900/40" />
+      {/* Vertical Timeline */}
+      <section ref={containerRef} className="relative max-w-4xl mx-auto pt-10 pb-20 overflow-hidden md:overflow-visible">
+        
+        {/* Center SVG Path for Desktop, Left aligned for Mobile */}
+        <div className="absolute left-0 top-0 bottom-0 w-[64px] md:left-1/2 md:-translate-x-1/2 md:w-[300px] pointer-events-none z-0">
+          <svg className="w-full h-full drop-shadow-[0_0_15px_rgba(227,27,22,0.5)]" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+            {/* Background faint path */}
+            <path 
+              d="M50 0 C50 15, 20 20, 20 35 C20 50, 80 50, 80 65 C80 80, 50 85, 50 100" 
+              stroke="#E31B16" 
+              strokeOpacity="0.1" 
+              strokeWidth="0.5" 
+              vectorEffect="non-scaling-stroke" 
+            />
+            
+            {/* Animated drawing path */}
+            <path 
+              d="M50 0 C50 15, 20 20, 20 35 C20 50, 80 50, 80 65 C80 80, 50 85, 50 100" 
+              stroke="url(#path-grad-main)" 
+              strokeWidth="1.5" 
+              pathLength="100"
+              strokeDasharray="100"
+              strokeDashoffset={scrollProgress}
+              vectorEffect="non-scaling-stroke" 
+              className="transition-all duration-700 ease-out"
+            />
+
+            {/* Accent dashed path */}
+            <path 
+              d="M50 0 C50 20, 30 25, 30 40 C30 55, 70 60, 70 75 C70 90, 50 95, 50 100" 
+              stroke="url(#path-grad-accent)" 
+              strokeWidth="0.5" 
+              pathLength="100"
+              strokeDasharray="2 3"
+              strokeDashoffset={scrollProgress * 1.5}
+              vectorEffect="non-scaling-stroke" 
+              className="transition-all duration-700 ease-out"
+            />
+            
+            <defs>
+              <linearGradient id="path-grad-main" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#E31B16" stopOpacity="0" />
+                <stop offset="0.2" stopColor="#E31B16" stopOpacity="1" />
+                <stop offset="0.8" stopColor="#FF5A1F" stopOpacity="1" />
+                <stop offset="1" stopColor="#E31B16" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="path-grad-accent" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#F2E9DC" stopOpacity="0" />
+                <stop offset="0.3" stopColor="#F2E9DC" stopOpacity="0.6" />
+                <stop offset="0.7" stopColor="#F2E9DC" stopOpacity="0.6" />
+                <stop offset="1" stopColor="#F2E9DC" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {BANNERS.map((banner, i) => (
-            <div
-              key={i}
-              className="relative bg-surface-container border border-red-900/40 p-6 backdrop-blur-sm group hover:border-primary-container/30 transition-colors duration-300"
-            >
-              {/* HUD corner brackets */}
-              <div className="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-primary-container/40" />
-              <div className="absolute -top-1 -right-1 w-4 h-4 border-t border-r border-primary-container/40" />
-              <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b border-l border-primary-container/40" />
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-primary-container/40" />
-
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.2em] text-primary-container/60 uppercase mb-2">
-                    {banner.title}
-                  </p>
-                  <p className="text-sm text-on-surface/50 font-body">
-                    {banner.desc}
-                  </p>
-                </div>
-                <span className="font-mono text-xs text-primary-container/80 bg-primary-container/10 border border-primary-container/30 px-2 py-1 shrink-0">
-                  {banner.time}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-xs tracking-[0.25em] text-primary-container/70 uppercase">
-            // DETAILED_TIMELINE
-          </span>
-          <div className="h-px flex-1 bg-red-900/40" />
-        </div>
-
-        <div className="relative border-l-2 border-red-900/50 ml-4 md:ml-8 pl-8 space-y-12 py-4">
-          {TIMELINE.map((item, i) => (
-            <div key={i} className="relative group">
-              {/* Timeline node */}
-              <div className="absolute -left-[45px] top-1/2 -translate-y-1/2 w-5 h-5 border-2 rounded-sm bg-background border-primary-container group-hover:bg-primary-container group-hover:shadow-[0_0_12px_rgba(200,30,30,0.6)] transition-all duration-300" />
-              
-              <Card faction={item.faction} className="max-w-3xl hover:translate-x-2 transition-transform duration-300">
-                <div className="flex flex-col md:flex-row md:items-center gap-4 justify-between">
-                  <div>
-                    <Badge faction={item.faction} className="mb-2">{item.time}</Badge>
-                    <h3 className="text-2xl font-headline font-semibold text-primary">{item.title}</h3>
-                    <p className="text-on-surface/50 font-body text-sm mt-1">{item.desc}</p>
+        
+        <div className="space-y-16 md:space-y-32 relative z-10">
+          {TIMELINE.map((item, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <div key={item.id} className="relative flex flex-col md:flex-row items-center group">
+                
+                {/* Node Dot (Desktop & Mobile) */}
+                <div className="absolute left-8 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-[#080606] border-2 border-primary group-hover:bg-primary group-hover:scale-150 group-hover:shadow-[0_0_20px_rgba(227,27,22,1)] transition-all duration-500 z-20 rounded-full" />
+                
+                {/* Content Left / Right */}
+                <div className={`w-full md:w-1/2 flex pl-16 md:pl-0 ${isEven ? 'md:justify-end md:pr-16' : 'md:justify-start md:pl-16 md:order-last'}`}>
+                  
+                  {/* Card Container with initial hidden state for animation */}
+                  <div 
+                    className={`timeline-node-card relative p-8 md:p-10 bg-[#120808]/90 backdrop-blur-md border border-white/5 hover:border-white/20 transition-all duration-700 w-full group-hover:bg-white/[0.03] group-hover:-translate-y-2 opacity-0 translate-y-16 ${isEven ? 'md:-translate-x-12' : 'md:translate-x-12'}`}
+                    style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+                  >
+                    
+                    {/* Glowing highlight line on hover */}
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between mb-6">
+                      <span className="font-headline text-5xl md:text-7xl font-bold text-white/5 group-hover:text-primary/20 transition-colors duration-500 leading-none tracking-tighter">
+                        {item.id}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-3xl md:text-4xl font-headline font-bold text-on-surface uppercase mb-4 group-hover:text-white transition-colors">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="font-body text-on-surface-muted text-base md:text-lg font-light leading-relaxed group-hover:text-on-surface transition-colors">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
-              </Card>
-            </div>
-          ))}
+                
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

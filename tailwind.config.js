@@ -7,34 +7,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0a0505',
+        background: '#080606',
         surface: {
-          DEFAULT: '#0d0808',
-          container: 'rgba(20,8,8,0.6)',
-          variant: '#1a0808'
+          DEFAULT: '#120808',
+          container: 'rgba(18,8,8,0.6)',
+          variant: '#1a0a0a'
         },
         primary: {
-          DEFAULT: '#f0e6d2',
-          container: '#c81e1e', // Strong Red
-          on: '#0a0505'
+          DEFAULT: '#E31B16',
+          container: '#9a100e',
+          on: '#F2E9DC'
         },
         secondary: {
-          DEFAULT: '#2b0e0e',
-          container: '#e0201f', // Crimson
+          DEFAULT: '#FF5A1F',
+          container: '#b3390c',
         },
         tertiary: {
           DEFAULT: '#1a0808',
-          container: '#9a1518', // Dark Blood
+          container: '#4a0d0d',
         },
         on: {
-          surface: '#f0e6d2'
+          surface: '#F2E9DC',
+          muted: '#9B8F89'
         }
       },
       fontFamily: {
-        headline: ['"Archivo Narrow"', 'sans-serif'],
-        eyebrow: ['"JetBrains Mono"', 'monospace'],
-        body: ['Geist', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        headline: ['"Barlow Condensed"', '"Roboto Condensed"', 'sans-serif'],
+        body: ['"DM Sans"', 'Manrope', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       spacing: {
         'base': '4px',
