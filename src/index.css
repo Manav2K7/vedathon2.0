@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0505;
-  --color-surface: #0d0808;
-  --color-surface-container: rgba(20,8,8,0.6);
-  --color-surface-variant: #1a0808;
-  --color-primary: #f0e6d2;
-  --color-primary-container: #c81e1e;
-  --color-on-primary: #0a0505;
-  --color-secondary: #2b0e0e;
-  --color-secondary-container: #e0201f;
+  --color-background: #080606;
+  --color-surface: #120808;
+  --color-surface-container: rgba(18,8,8,0.6);
+  --color-surface-variant: #1a0a0a;
+  --color-primary: #E31B16;
+  --color-primary-container: #9a100e;
+  --color-on-primary: #F2E9DC;
+  --color-secondary: #FF5A1F;
+  --color-secondary-container: #b3390c;
   --color-tertiary: #1a0808;
-  --color-tertiary-container: #9a1518;
-  --color-on-surface: #f0e6d2;
+  --color-tertiary-container: #4a0d0d;
+  --color-on-surface: #F2E9DC;
+  --color-on-surface-muted: #9B8F89;
 
-  --font-headline: "Archivo Narrow", sans-serif;
-  --font-eyebrow: "JetBrains Mono", monospace;
-  --font-body: Geist, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-headline: "Pixelify Sans", "Barlow Condensed", sans-serif;
+  --font-body: "DM Sans", Manrope, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-new-rocker: "New Rocker", cursive;
 
   --spacing-base: 4px;
   --spacing-gutter: 24px;
@@ -36,5 +37,24 @@
     font-family: var(--font-headline);
     text-transform: uppercase;
     letter-spacing: -0.025em;
+  }
+
+  h1 {
+    animation: textGlitch 4s infinite alternate;
+  }
+}
+
+@keyframes textGlitch {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 1;
+    transform: skew(0deg);
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.9;
+    transform: skew(-2deg);
+    text-shadow: 2px 0 0 rgba(227,27,22,0.8), -2px 0 0 rgba(0,255,255,0.4);
+  }
+  21%, 63.5% {
+    transform: skew(3deg);
   }
 }
